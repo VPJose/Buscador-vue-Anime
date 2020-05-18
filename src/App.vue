@@ -1,12 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
+  <div id="app" class="container">
+    <Navegacion></Navegacion>
+    <Barra-lateral></Barra-lateral>
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
     <router-view/>
+    <Footer></Footer>
   </div>
 </template>
+
+<script>
+import Navegacion from './components/navComponent'
+import BarraLateral from './components/barraLateralComponent'
+import Footer from './components/footerComponent'
+
+export default {
+  components: {
+    Navegacion: Navegacion,
+    BarraLateral: BarraLateral,
+    Footer: Footer
+  }
+}
+</script>
 
 <style>
 #app {
