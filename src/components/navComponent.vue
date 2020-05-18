@@ -27,40 +27,10 @@
 
 <script>
 export default {
+  props: ['links'],
   data() {
     return {
-      links: [
-        {
-          class: 'icon-home',
-          texto: 'inicio',
-          href: '/'
-        },
-        {
-          class: 'icon-monitor',
-          texto: 'Anime',
-          href: '/'
-        },
-        {
-          class: 'icon-book-open',
-          texto: 'Manga',
-          href: '/'
-        },
-        {
-          class: 'icon-music',
-          texto: 'Music',
-          href: '/'
-        },
-        {
-          class: 'icon-user',
-          texto: 'Person',
-          href: '/'
-        },
-        {
-          class: '',
-          texto: 'About',
-          href: '/about'
-        }
-      ]
+    
     }
   },
   methods: {

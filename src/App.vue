@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
-    <Navegacion></Navegacion>
-    <Barra-lateral></Barra-lateral>
+    <Navegacion :links="links"></Navegacion>
+    <Barra-lateral :links="links"></Barra-lateral>
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -21,6 +21,42 @@ export default {
     Navegacion: Navegacion,
     BarraLateral: BarraLateral,
     Footer: Footer
+  },
+  data() {
+    return {
+      links: [
+        {
+          class: 'icon-home',
+          texto: 'inicio',
+          href: '/'
+        },
+        {
+          class: 'icon-monitor',
+          texto: 'Anime',
+          href: '/anime'
+        },
+        {
+          class: 'icon-book-open',
+          texto: 'Manga',
+          href: '/'
+        },
+        {
+          class: 'icon-music',
+          texto: 'Music',
+          href: '/'
+        },
+        {
+          class: 'icon-user',
+          texto: 'Person',
+          href: '/'
+        },
+        {
+          class: '',
+          texto: 'About',
+          href: '/about'
+        }
+      ]
+    }
   }
 }
 </script>

@@ -4,14 +4,54 @@
       <img src="img/imgsearch.svg" alt="">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
     </div> -->
-    <h2>{{dia}}</h2>
-    <!-- <div v-for="result in resultado.diasSemana" :key="result.id">
-      <div id="respuesta" class="contenedor-tarjeta">
-      <div class="pantalla">
+    <div class="section" v-if="nombre.anime">
+      <h3 class="title"> ANIME </h3>
+      <div class="tarjeta">
+        <div class="contenedor-tarjeta"  v-for="result in respuesta.anime" :key="result.id">
+          <figure>
+            <img :src="result.image_url" alt="" class="frontal">
+            <h3 class="card-title-frontal">{{ result.title }}</h3>
+            <h3 class="card-type" :class="result.type">{{ result.type }}</h3>
+            <figcaption class="trasera">
+              <div id="close" class="close">
+                <span class="icon-cancel"></span>
+              </div>
+              <h3 class="card-title">{{ result.title }}</h3>
+              <hr>
+              <p>{{result.synopsis}}</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div class="section" v-if="nombre.manga">
+      <h3 class="title"> MANGA </h3>
+      <div class="tarjeta">
+        <div class="contenedor-tarjeta"  v-for="result in respuesta.manga" :key="result.id">
+          <figure>
+            <img :src="result.image_url" alt="" class="frontal">
+            <h3 class="card-title-frontal">{{ result.title }}</h3>
+            <h3 class="card-type" :class="result.type">{{ result.type }}</h3>
+            <figcaption class="trasera">
+              <div id="close" class="close">
+                <span class="icon-cancel"></span>
+              </div>
+              <h3 class="card-title">{{ result.title }}</h3>
+              <hr>
+              <p>{{result.synopsis}}</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div class="section" v-if="nombre.person">
+      <h3 class="title"> PERSON </h3>
+    <div class="tarjeta">
+      <div class="contenedor-tarjeta"  v-for="result in respuesta.person" :key="result.id">
         <figure>
           <img :src="result.image_url" alt="" class="frontal">
           <h3 class="card-title-frontal">{{ result.title }}</h3>
-          <h3 class="card-type result.type">{{ result.type }}</h3>
+          <h3 class="card-type" :class="result.type || 'TV'">{{ result.type || result.favorites}}</h3>
           <figcaption class="trasera">
             <div id="close" class="close">
               <span class="icon-cancel"></span>
@@ -23,22 +63,20 @@
         </figure>
       </div>
     </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['resultados','dia'],
+  props: ['respuesta','nombre'],
   data() {
     return {
-      resultado: '',
     }
   },
-  created() {
+  mounted() {
     //do something after creating vue instance
-    this.resultado = this.resultados;
-    console.log(this.resultados);
+
   }
 }
 </script>

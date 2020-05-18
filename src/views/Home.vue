@@ -2,7 +2,7 @@
   <main>
     <div class="main">
       <buscador></buscador>
-      <resultados :resultados="resultados" :dia="dia"></resultados>
+      <resultados :respuesta="respuesta" :nombre="nombre"></resultados>
     </div>
   </main>
 </template>
@@ -20,20 +20,61 @@ export default {
   },
   data() {
     return {
-      f: new Date(),
-      diasSemana: new Array("sunday","monday","tuesday","wednesday","ththursday","friday","saturday"),
-      dia: '',
-      resultados: []
+      respuesta: {
+        anime: [],
+        manga: [],
+        person: []
+      },
+      nombre: {
+        anime: false,
+        manga: false,
+        person: false
+      }
+    }
+  },
+  methods: {
+    buscar() {
+      jikanjs.loadTop('anime',1)
+      .then((value) => { return value.top})
+      .then((value) => {
+        this.arreglo('anime',value,12);
+        this.nombre.anime = true;
+      })
+      jikanjs.loadTop('manga',1)
+      .then((value) => { return value.top})
+      .then((value) => {
+        this.arreglo('manga',value,12);
+        this.nombre.manga = true;
+      })
+      jikanjs.loadTop('people',1)
+      .then((value) => { return value.top})
+      .then((value) => {
+        this.arreglo('person',value,12);
+        this.nombre.person = true;
+      })
+    },
+    arreglo(tipo, valor, cantidad) {
+      if (tipo == 'anime') {
+        for (var i = 0; i < cantidad; i++) {
+          this.respuesta.anime[i] = valor[i]
+        }
+      }
+      if (tipo == 'manga') {
+        for (var j = 0; j < cantidad; j++) {
+          this.respuesta.manga[j] = valor[j]
+        }
+      }
+      if (tipo == 'person') {
+        for (var k = 0; k < cantidad; k++) {
+          this.respuesta.person[k] = valor[k]
+        }
+      }
     }
   },
   created() {
     //do something after creating vue instance
-    // console.log(this.diasSemana[this.f.getDay()]);
-    this.dia = this.diasSemana[this.f.getDay()];
-    console.log(this.dia);
-    jikanjs.loadSchedule()
-    .then(value => { return this.resultados = value })
-    .catch(err => { console.log(err) })
+    this.buscar();
   }
+
 }
 </script>

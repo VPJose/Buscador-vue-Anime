@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-lateral" id="menu-lateral">
+  <div class="menu-lateral" id="menu-lateral" @click.prevent="despalazarbarra($event.target)">
     <div class="contenedor menu-active">
       <div class="menu-logo">
         <a href="/">
@@ -14,7 +14,7 @@
       </div>
       <form class="menu-search" id="barra-formulario">
         <input type="text" class="search" placeholder="Search">
-        <button type="submit" name="button" class="menu-boton icon-search"></button>
+        <button type="submit" name="button" class="menu-boton icon-search" @click.prevent="enviar()"></button>
       </form>
     </div>
   </div>
@@ -22,51 +22,31 @@
 
 <script>
 export default {
+  props: ['links'],
   data() {
     return {
-      links: [
-        {
-          class: 'icon-home',
-          texto: 'inicio',
-          href: '/'
-        },
-        {
-          class: 'icon-monitor',
-          texto: 'Anime',
-          href: '/anime'
-        },
-        {
-          class: 'icon-book-open',
-          texto: 'Manga',
-          href: '/'
-        },
-        {
-          class: 'icon-music',
-          texto: 'Music',
-          href: '/'
-        },
-        {
-          class: 'icon-user',
-          texto: 'Person',
-          href: '/'
-        },
-        {
-          class: '',
-          texto: 'About',
-          href: '/about'
-        }
-      ]
+
     }
   },
   methods: {
     despalzar() {
-      this.pantalla = document.getElementById('menu-lateral');
-      this.barra_lateral = document.getElementById('menu-lateral').firstElementChild;
+      let pantalla = document.getElementById('menu-lateral');
+      let barra_lateral = document.getElementById('menu-lateral').firstElementChild;
 
-      if (this.barra_lateral.className !== 'contenedor menu-active') {
-        this.pantalla.classList.remove('menu-Lateral-active');
-        this.barra_lateral.classList.add('menu-active');
+      setTimeout(() => {
+        if (barra_lateral.className !== 'contenedor menu-active') {
+          pantalla.classList.remove('menu-Lateral-active');
+          barra_lateral.classList.add('menu-active');
+        }
+      },2000);
+    },
+    despalazarbarra(event) {
+      if (event.className == 'menu-lateral menu-Lateral-active') {
+        this.despalzar();
       }
+    },
+    enviar() {
+      console.log('si');
     }
   }
 }
