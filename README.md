@@ -1,24 +1,19 @@
-# listavue
+# Buscador-vue: Anime
 
-## Project setup
-```
-npm install
-```
+***
+Lenguajes utilizados:
+- HTML
+- CSS
+- JavaScript
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Framework utilizados:
+- Vue
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Paquetes Utilizados:
+- Vue
+- Vuex
+- Router-Vue
+- Jikanjs
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+API utilizada para el buscador:
+- Jikan
